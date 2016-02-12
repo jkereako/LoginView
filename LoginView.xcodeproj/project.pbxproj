@@ -12,8 +12,8 @@
 		625C70071C6D4A24000BB9AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625C70061C6D4A24000BB9AA /* Assets.xcassets */; };
 		625C700A1C6D4A24000BB9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C70081C6D4A24000BB9AA /* LaunchScreen.storyboard */; };
 		625C70151C6D4A24000BB9AA /* LoginViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C70141C6D4A24000BB9AA /* LoginViewTests.swift */; };
-		625C70201C6D4A25000BB9AA /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C701F1C6D4A25000BB9AA /* LoginViewUITests.swift */; };
 		62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D201C6D4B9D0070EAE2 /* LoginController.swift */; };
+		62849D231C6D50130070EAE2 /* LoginControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D221C6D50130070EAE2 /* LoginControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,9 +44,9 @@
 		625C70141C6D4A24000BB9AA /* LoginViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewTests.swift; sourceTree = "<group>"; };
 		625C70161C6D4A24000BB9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625C701B1C6D4A25000BB9AA /* LoginViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		625C701F1C6D4A25000BB9AA /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		625C70211C6D4A25000BB9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62849D201C6D4B9D0070EAE2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		62849D221C6D50130070EAE2 /* LoginControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				625C70211C6D4A25000BB9AA /* Info.plist */,
-				625C701F1C6D4A25000BB9AA /* LoginViewUITests.swift */,
+				62849D221C6D50130070EAE2 /* LoginControllerTest.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -297,7 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				625C70201C6D4A25000BB9AA /* LoginViewUITests.swift in Sources */,
+				62849D231C6D50130070EAE2 /* LoginControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

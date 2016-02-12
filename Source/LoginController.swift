@@ -32,7 +32,13 @@ extension LoginController: UITextFieldDelegate {
 
   // Dismiss the keyboard when the user hits the return key
   func textFieldShouldReturn(textField: UITextField) -> Bool {
+
     textField.resignFirstResponder()
+
+    // Move on to the password field automatically
+    if textField === usernameField {
+      passwordField.becomeFirstResponder()
+    }
 
     return true
   }
