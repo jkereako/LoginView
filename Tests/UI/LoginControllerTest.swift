@@ -17,7 +17,7 @@ class LoginControllerTest: XCTestCase {
     XCUIApplication().launch()
   }
 
-  func testUsernameFieldShakesWhenUsernameFieldIsEmpty() {
+  func testBothFieldsShakeWhenUsernameFieldIsEmpty() {
     let app = XCUIApplication()
     let tablesQuery = app.tables
 
@@ -27,7 +27,7 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.buttons["login"].tap()
   }
 
-  func testPasswordFieldShakesWhenPasswordFieldIsEmpty() {
+  func testBothFieldsShakeWhenPasswordFieldIsEmpty() {
     let app = XCUIApplication()
     let tablesQuery = app.tables
 

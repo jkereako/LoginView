@@ -11,35 +11,35 @@ import UIKit
 class LoginController: UITableViewController {
   @IBOutlet weak var usernameField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
-
-  private let username = Keychain.stringForKey(Constants.KeychainKeys.Username)
-  private let password = Keychain.stringForKey(Constants.KeychainKeys.Password)
 }
 
 // MARK: - Actions
 extension LoginController {
   // This is triggered before `shouldPerformSegueWithIdentifier`
   @IBAction func loginAction(sender: UIButton) {
-    if usernameField.text != username {
-      let animator = TextFieldShakeAnimator(speed: 0.08, amplitude: 5, count: 6, textField: usernameField)
-      animator.shake()
-    }
+    let password = Keychain.password(forAccount: usernameField.text ?? "")
 
-    if passwordField.text != password {
-      let animator = TextFieldShakeAnimator(speed: 0.08, amplitude: 5, count: 6, textField: passwordField)
-      animator.shake()
+    if passwordField.text == password && password.characters.count > 0 {
+        return
     }
+    
+    TextFieldShakeAnimator(speed: 0.08, amplitude: 5, count: 6, textField: usernameField).shake()
+    TextFieldShakeAnimator(speed: 0.08, amplitude: 5, count: 6, textField: passwordField).shake()
   }
 }
 
 // MARK: - Navigation
 extension LoginController {
   override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-    guard identifier == "login" else {
+    guard identifier == "login",
+      let username = usernameField.text where username.characters.count > 0,
+      let suppliedPassword = passwordField.text where username.characters.count > 0 else {
       return false
     }
 
-    if usernameField.text == username && passwordField.text == password {
+    let actualPassword = Keychain.password(forAccount: username)
+
+    if suppliedPassword == actualPassword {
       return true
     }
 

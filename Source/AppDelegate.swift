@@ -16,8 +16,7 @@ class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
 
-    Keychain.setString("jonsnow", forKey: Constants.KeychainKeys.Username)
-    Keychain.setString("wallwatcher247", forKey: Constants.KeychainKeys.Password)
+    Keychain.setPassword("wallwatcher247", forAccount: "jonsnow")
 
     return true
   }

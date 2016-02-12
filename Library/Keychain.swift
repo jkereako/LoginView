@@ -2,280 +2,112 @@
 //  Keychain.swift
 //  Keychain
 //
-//  Created by Jason Rendel on 9/23/14.
-//  Copyright (c) 2014 Jason Rendel. All rights reserved.
+//  Created by Hyper on 12/14/15.
+//  Copyright © 2016 Hyper. All rights reserved.
 //
-//    The MIT License (MIT)
-//
-//    Permission is hereby granted, free of charge, to any person obtaining a copy
-//    of this software and associated documentation files (the "Software"), to deal
-//    in the Software without restriction, including without limitation the rights
-//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to permit persons to whom the Software is
-//    furnished to do so, subject to the following conditions:
-//
-//    The above copyright notice and this permission notice shall be included in all
-//    copies or substantial portions of the Software.
-//
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//    SOFTWARE.
 
 import Foundation
+import Security
 
+public struct Keychain {
 
-private let SecMatchLimit: String! = kSecMatchLimit as String
-private let SecReturnData: String! = kSecReturnData as String
-private let SecReturnPersistentRef: String! = kSecReturnPersistentRef as String
-private let SecValueData: String! = kSecValueData as String
-private let SecAttrAccessible: String! = kSecAttrAccessible as String
-private let SecClass: String! = kSecClass as String
-private let SecAttrService: String! = kSecAttrService as String
-private let SecAttrGeneric: String! = kSecAttrGeneric as String
-private let SecAttrAccount: String! = kSecAttrAccount as String
-private let SecAttrAccessGroup: String! = kSecAttrAccessGroup as String
+  static let bundleIdentifier: String = {
+    return NSBundle.mainBundle().bundleIdentifier ?? ""
+  }()
 
-/// Keychain is a class to help make Keychain access in Swift more straightforward. It is designed to make accessing the Keychain services more like using NSUserDefaults, which is much more familiar to people.
-class Keychain {
-  // MARK: Private static Properties
-  private struct internalVars {
-    static var serviceName: String = ""
-    static var accessGroup: String = ""
+  enum Action {
+    case Insert, Fetch, Delete
   }
 
-  // MARK: Properties
+  // MARK: - Public methods
 
-  /// ServiceName is used for the kSecAttrService property to uniquely identify this keychain accessor. If no service name is specified, Keychain will default to using the bundleIdentifier.
-  ///
-  ///This is a static property and only needs to be set once
-  class var serviceName: String {
-    get {
-    if internalVars.serviceName.isEmpty {
-    internalVars.serviceName = NSBundle.mainBundle().bundleIdentifier ?? "SwiftKeychain"
+  public static func password(forAccount account: String, service: String = bundleIdentifier, accessGroup: String = "") -> String {
+    guard !service.isEmpty && !account.isEmpty else { return "" }
+
+    var query = [
+      kSecAttrAccount as String : account,
+      kSecAttrService as String : service,
+      kSecClass as String : kSecClassGenericPassword]
+
+    if !accessGroup.isEmpty {
+      query[kSecAttrAccessGroup as String] = accessGroup
     }
-    return internalVars.serviceName
-    }
-    set(newServiceName) {
-      internalVars.serviceName = newServiceName
-    }
+
+    return Keychain.query(.Fetch, query).1
   }
 
-  /// AccessGroup is used for the kSecAttrAccessGroup property to identify which Keychain Access Group this entry belongs to. This allows you to use the Keychain with shared keychain access between different applications.
-  ///
-  /// Access Group defaults to an empty string and is not used until a valid value is set.
-  ///
-  /// This is a static property and only needs to be set once. To remove the access group property after one has been set, set this to an empty string.
-  class var accessGroup: String {
-    get {
-    return internalVars.accessGroup
+  public static func setPassword(password: String, forAccount account: String, service: String = bundleIdentifier, accessGroup: String = "") -> Bool {
+    guard !service.isEmpty && !account.isEmpty else { return false }
+
+    var query = [
+      kSecAttrAccount as String : account,
+      kSecAttrService as String : service,
+      kSecClass as String : kSecClassGenericPassword,
+      kSecAttrAccessible as String : kSecAttrAccessibleWhenUnlocked]
+
+    if !accessGroup.isEmpty {
+      query[kSecAttrAccessGroup as String] = accessGroup
     }
-    set(newAccessGroup){
-      internalVars.accessGroup = newAccessGroup
-    }
+
+    return Keychain.query(.Insert, query, password).0 == errSecSuccess
   }
 
-  // MARK: Methods
-
-  /// Checks if keychain data exists for a specified key.
-  ///
-  /// - parameter keyName: The key to check for.
-  /// - returns: True if a value exists for the key. False otherwise.
-  class func hasValueForKey(keyName: String) -> Bool {
-    let keychainData: NSData? = self.dataForKey(keyName)
-    if keychainData != nil {
-      return true
-    } else {
-      return false
-    }
+  public static func deletePassword(forAccount account: String, service: String = bundleIdentifier) -> Bool {
+    return deletePassword(forAccount: account, service: service, accessGroup: "")
   }
 
-  /// Returns a string value for a specified key.
-  ///
-  /// - parameter keyName: The key to lookup data for.
-  /// - returns: The String associated with the key if it exists. If no data exists, or the data found cannot be encoded as a string, returns nil.
-  class func stringForKey(keyName: String) -> String? {
-    let keychainData: NSData? = self.dataForKey(keyName)
-    var stringValue: String?
-    if let data = keychainData {
-      stringValue = NSString(data: data, encoding: NSUTF8StringEncoding) as String?
+  public static func deletePassword(forAccount account: String, service: String = bundleIdentifier, accessGroup: String) -> Bool {
+    guard !service.isEmpty && !account.isEmpty else { return false }
+
+    var query = [
+      kSecAttrAccount as String: account,
+      kSecAttrService as String : service,
+      kSecClass as String : kSecClassGenericPassword
+    ]
+
+    if !accessGroup.isEmpty {
+      query[kSecAttrAccessGroup as String] = accessGroup
     }
 
-    return stringValue
+    return Keychain.query(.Delete, query).0 == errSecSuccess
   }
 
+  // MARK: - Private methods
 
-  /// Returns an object that conforms to NSCoding for a specified key.
-  ///
-  /// - parameter keyName: The key to lookup data for.
-  /// - returns: The decoded object associated with the key if it exists. If no data exists, or the data found cannot be decoded, returns nil.
-  class func objectForKey(keyName: String) -> NSCoding? {
-    let dataValue: NSData? = self.dataForKey(keyName)
+  private static func query(action: Action, _ query: [String : AnyObject], _ password: String = "") -> (OSStatus, String) {
+    let passwordData = password.dataUsingEncoding(NSUTF8StringEncoding)
+    var returnPassword = ""
+    var status = SecItemCopyMatching(query, nil)
+    var attributes = [String : AnyObject]()
 
-    var objectValue: NSCoding?
+    switch action {
+    case .Insert:
+      switch status {
+      case errSecSuccess:
+        attributes[kSecValueData as String] = passwordData
+        status = SecItemUpdate(query as CFDictionaryRef, attributes)
+      case errSecItemNotFound:
+        var query = query
+        query[kSecValueData as String] = passwordData
+        status = SecItemAdd(query as CFDictionaryRef, nil)
+      default: break
+      }
+    case .Fetch:
+      var query = query
+      query[kSecReturnData as String] = true
+      query[kSecMatchLimit as String] = kSecMatchLimitOne
 
-    if let data = dataValue {
-      objectValue = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSCoding
+      var result: CFTypeRef?
+      status = SecItemCopyMatching(query, &result)
+
+      if let result = result as? NSData,
+        password = String(data: result, encoding: NSUTF8StringEncoding) {
+          returnPassword = password
+      }
+    case .Delete:
+      status = SecItemDelete(query)
     }
-
-    return objectValue;
-  }
-
-
-  /// Returns a NSData object for a specified key.
-  ///
-  /// - parameter keyName: The key to lookup data for.
-  /// - returns: The NSData object associated with the key if it exists. If no data exists, returns nil.
-  class func dataForKey(keyName: String) -> NSData? {
-    var keychainQueryDictionary = self.setupKeychainQueryDictionaryForKey(keyName)
-    var result: AnyObject?
-
-    // Limit search results to one
-    keychainQueryDictionary[SecMatchLimit] = kSecMatchLimitOne
-
-    // Specify we want NSData/CFData returned
-    keychainQueryDictionary[SecReturnData] = kCFBooleanTrue
-
-    // Search
-    let status = withUnsafeMutablePointer(&result) {
-      SecItemCopyMatching(keychainQueryDictionary, UnsafeMutablePointer($0))
-    }
-
-    return status == noErr ? result as? NSData : nil
-  }
-
-
-  /// Returns a persistent data reference object for a specified key.
-  ///
-  /// - parameter keyName: The key to lookup data for.
-  /// - returns: The persistent data reference object associated with the key if it exists. If no data exists, returns nil.
-  class func dataRefForKey(keyName: String) -> NSData? {
-    var keychainQueryDictionary = self.setupKeychainQueryDictionaryForKey(keyName)
-    var result: AnyObject?
-
-    // Limit search results to one
-    keychainQueryDictionary[SecMatchLimit] = kSecMatchLimitOne
-
-    // Specify we want persistent NSData/CFData reference returned
-    keychainQueryDictionary[SecReturnPersistentRef] = kCFBooleanTrue
-
-    // Search
-    let status = withUnsafeMutablePointer(&result) {
-      SecItemCopyMatching(keychainQueryDictionary, UnsafeMutablePointer($0))
-    }
-
-    return status == noErr ? result as? NSData : nil
-  }
-
-
-  /// Save a String value to the keychain associated with a specified key. If a String value already exists for the given keyname, the string will be overwritten with the new value.
-  ///
-  /// - parameter value: The String value to save.
-  /// - parameter forKey: The key to save the String under.
-  /// - returns: True if the save was successful, false otherwise.
-  class func setString(value: String, forKey keyName: String) -> Bool {
-    if let data = value.dataUsingEncoding(NSUTF8StringEncoding) {
-      return self.setData(data, forKey: keyName)
-    } else {
-      return false
-    }
-  }
-
-  /// Save an NSCoding compliant object to the keychain associated with a specified key. If an object already exists for the given keyname, the object will be overwritten with the new value.
-  ///
-  /// - parameter value: The NSCoding compliant object to save.
-  /// - parameter forKey: The key to save the object under.
-  /// - returns: True if the save was successful, false otherwise.
-  class func setObject(value: NSCoding, forKey keyName: String) -> Bool {
-    let data = NSKeyedArchiver.archivedDataWithRootObject(value)
-
-    return self.setData(data, forKey: keyName)
-  }
-
-  /// Save a NSData object to the keychain associated with a specified key. If data already exists for the given keyname, the data will be overwritten with the new value.
-  ///
-  /// - parameter value: The NSData object to save.
-  /// - parameter forKey: The key to save the object under.
-  /// - returns: True if the save was successful, false otherwise.
-  class func setData(value: NSData, forKey keyName: String) -> Bool {
-    var keychainQueryDictionary: [String:AnyObject] = self.setupKeychainQueryDictionaryForKey(keyName)
-
-    keychainQueryDictionary[SecValueData] = value
-
-    // Protect the keychain entry so it's only valid when the device is unlocked
-    keychainQueryDictionary[SecAttrAccessible] = kSecAttrAccessibleWhenUnlocked
-
-    let status: OSStatus = SecItemAdd(keychainQueryDictionary, nil)
-
-    if status == errSecSuccess {
-      return true
-    } else if status == errSecDuplicateItem {
-      return self.updateData(value, forKey: keyName)
-    } else {
-      return false
-    }
-  }
-
-  /// Remove an object associated with a specified key.
-  ///
-  /// - parameter keyName: The key value to remove data for.
-  /// - returns: True if successful, false otherwise.
-  class func removeObjectForKey(keyName: String) -> Bool {
-    let keychainQueryDictionary: [String:AnyObject] = self.setupKeychainQueryDictionaryForKey(keyName)
-
-    // Delete
-    let status: OSStatus =  SecItemDelete(keychainQueryDictionary);
-
-    if status == errSecSuccess {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  // MARK: Private Methods
-
-  /// Update existing data associated with a specified key name. The existing data will be overwritten by the new data
-  private class func updateData(value: NSData, forKey keyName: String) -> Bool {
-    let keychainQueryDictionary: [String:AnyObject] = self.setupKeychainQueryDictionaryForKey(keyName)
-    let updateDictionary = [SecValueData:value]
-
-    // Update
-    let status: OSStatus = SecItemUpdate(keychainQueryDictionary, updateDictionary)
-
-    if status == errSecSuccess {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  /// Setup the keychain query dictionary used to access the keychain on iOS for a specified key name. Takes into account the Service Name and Access Group if one is set.
-  ///
-  /// - parameter keyName: The key this query is for
-  /// - returns: A dictionary with all the needed properties setup to access the keychain on iOS
-  private class func setupKeychainQueryDictionaryForKey(keyName: String) -> [String:AnyObject] {
-    // Setup dictionary to access keychain and specify we are using a generic password (rather than a certificate, internet password, etc)
-    var keychainQueryDictionary: [String:AnyObject] = [SecClass:kSecClassGenericPassword]
-
-    // Uniquely identify this keychain accessor
-    keychainQueryDictionary[SecAttrService] = Keychain.serviceName
-
-    // Set the keychain access group if defined
-    if !Keychain.accessGroup.isEmpty {
-      keychainQueryDictionary[SecAttrAccessGroup] = Keychain.accessGroup
-    }
-
-    // Uniquely identify the account who will be accessing the keychain
-    let encodedIdentifier: NSData? = keyName.dataUsingEncoding(NSUTF8StringEncoding)
-
-    keychainQueryDictionary[SecAttrGeneric] = encodedIdentifier
     
-    keychainQueryDictionary[SecAttrAccount] = encodedIdentifier
-    
-    return keychainQueryDictionary
+    return (status, returnPassword)
   }
 }
