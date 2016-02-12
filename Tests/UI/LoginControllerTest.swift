@@ -17,14 +17,43 @@ class LoginControllerTest: XCTestCase {
     XCUIApplication().launch()
   }
 
-  func testLogin() {
+  func testUsernameFieldShakesWhenUsernameFieldIsEmpty() {
     let app = XCUIApplication()
     let tablesQuery = app.tables
+
+    tablesQuery.secureTextFields["password"].tap()
+    tablesQuery.secureTextFields["password"].typeText("wallwatcher247")
+    app.keyboards.buttons["Done"].tap()
+    tablesQuery.buttons["login"].tap()
+  }
+
+  func testPasswordFieldShakesWhenPasswordFieldIsEmpty() {
+    let app = XCUIApplication()
+    let tablesQuery = app.tables
+
     tablesQuery.textFields["username"].tap()
     tablesQuery.textFields["username"].typeText("jonsnow")
-    app.buttons["Next"].tap()
+    app.keyboards.buttons["Next"].tap()
+    app.keyboards.buttons["Done"].tap()
+    tablesQuery.buttons["login"].tap()
+  }
+
+  func testBothFieldsShakeWhenBothFieldsAreEmpty() {
+    let app = XCUIApplication()
+    let tablesQuery = app.tables
+
+    tablesQuery.buttons["login"].tap()
+  }
+
+  func testSuccessfulLogin() {
+    let app = XCUIApplication()
+    let tablesQuery = app.tables
+
+    tablesQuery.textFields["username"].tap()
+    tablesQuery.textFields["username"].typeText("jonsnow")
+    app.keyboards.buttons["Next"].tap()
     tablesQuery.secureTextFields["password"].typeText("wallwatcher247")
-    app.buttons["Done"].tap()
+    app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
   }
 }
