@@ -9,7 +9,7 @@
 import Foundation
 import Security
 
-public struct Keychain {
+struct Keychain {
 
   static let bundleIdentifier: String = {
     return NSBundle.mainBundle().bundleIdentifier ?? ""
@@ -19,9 +19,9 @@ public struct Keychain {
     case Insert, Fetch, Delete
   }
 
-  // MARK: - Public methods
+  // MARK: - methods
 
-  public static func password(forAccount account: String, service: String = bundleIdentifier, accessGroup: String = "") -> String {
+  static func password(forAccount account: String, service: String = bundleIdentifier, accessGroup: String = "") -> String {
     guard !service.isEmpty && !account.isEmpty else { return "" }
 
     var query = [
@@ -36,7 +36,7 @@ public struct Keychain {
     return Keychain.query(.Fetch, query).1
   }
 
-  public static func setPassword(password: String, forAccount account: String, service: String = bundleIdentifier, accessGroup: String = "") -> Bool {
+  static func setPassword(password: String, forAccount account: String, service: String = bundleIdentifier, accessGroup: String = "") -> Bool {
     guard !service.isEmpty && !account.isEmpty else { return false }
 
     var query = [
@@ -52,11 +52,11 @@ public struct Keychain {
     return Keychain.query(.Insert, query, password).0 == errSecSuccess
   }
 
-  public static func deletePassword(forAccount account: String, service: String = bundleIdentifier) -> Bool {
+  static func deletePassword(forAccount account: String, service: String = bundleIdentifier) -> Bool {
     return deletePassword(forAccount: account, service: service, accessGroup: "")
   }
 
-  public static func deletePassword(forAccount account: String, service: String = bundleIdentifier, accessGroup: String) -> Bool {
+  static func deletePassword(forAccount account: String, service: String = bundleIdentifier, accessGroup: String) -> Bool {
     guard !service.isEmpty && !account.isEmpty else { return false }
 
     var query = [
