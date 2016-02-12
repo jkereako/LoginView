@@ -39,7 +39,8 @@ extension LoginController {
 
     let actualPassword = Keychain.password(forAccount: username)
 
-    if suppliedPassword == actualPassword {
+    // Make sure the passwords match and that `Keychain.password()` has returned a non-empty string
+    if suppliedPassword == actualPassword && actualPassword.characters.count > 0 {
       return true
     }
 

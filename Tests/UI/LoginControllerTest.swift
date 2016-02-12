@@ -17,7 +17,7 @@ class LoginControllerTest: XCTestCase {
     XCUIApplication().launch()
   }
 
-  func testBothFieldsShakeWhenUsernameFieldIsEmpty() {
+  func testBothFieldsShakeWhenUsernameFieldIsEmptyAndPasswordFieldIsCorrect() {
     let app = XCUIApplication()
     let tablesQuery = app.tables
 
@@ -27,12 +27,22 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.buttons["login"].tap()
   }
 
-  func testBothFieldsShakeWhenPasswordFieldIsEmpty() {
+  func testBothFieldsShakeWhenUsernameFieldIsEmptyAndPasswordFieldIsIncorrect() {
+    let app = XCUIApplication()
+    let tablesQuery = app.tables
+
+    tablesQuery.secureTextFields["password"].tap()
+    tablesQuery.secureTextFields["password"].typeText("not_the_password")
+    app.keyboards.buttons["Done"].tap()
+    tablesQuery.buttons["login"].tap()
+  }
+
+  func testBothFieldsShakeWhenPasswordFieldIsEmptyAndUsernameFieldIsIncorrect() {
     let app = XCUIApplication()
     let tablesQuery = app.tables
 
     tablesQuery.textFields["username"].tap()
-    tablesQuery.textFields["username"].typeText("jonsnow")
+    tablesQuery.textFields["username"].typeText("noone")
     app.keyboards.buttons["Next"].tap()
     app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
