@@ -15,11 +15,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="hTq-CN-DHF">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="219"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-49-b3b">
+                                    <rect key="frame" x="245" y="81" width="109" height="57.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="48"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Gaa-49-b3b" firstAttribute="centerX" secondItem="hTq-CN-DHF" secondAttribute="centerX" id="Xrr-fL-ul3"/>
+                                <constraint firstItem="Gaa-49-b3b" firstAttribute="centerY" secondItem="hTq-CN-DHF" secondAttribute="centerY" id="xYU-eg-1lA"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="HAo-HJ-pru" userLabel="Section">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="username" id="k2A-rn-eLF" userLabel="Username row">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="64"/>
+                                        <rect key="frame" x="0.0" y="219" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k2A-rn-eLF" id="dar-Rc-afC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
@@ -29,7 +46,8 @@
                                                     <rect key="frame" x="20" y="0.0" width="560" height="63.5"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="username"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="pXg-aW-eMb" id="Zve-VS-KQT"/>
@@ -47,7 +65,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="password" id="Lfj-Jo-mnp" userLabel="Password row">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="64"/>
+                                        <rect key="frame" x="0.0" y="283" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfj-Jo-mnp" id="ygy-pb-hHj">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
@@ -57,7 +75,8 @@
                                                     <rect key="frame" x="20" y="0.0" width="560" height="63.5"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="password"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="pXg-aW-eMb" id="gVK-fD-prA"/>
@@ -75,7 +94,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="password" id="Cft-PU-h0f" userLabel="Login row">
-                                        <rect key="frame" x="0.0" y="163" width="600" height="64"/>
+                                        <rect key="frame" x="0.0" y="347" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cft-PU-h0f" id="vUg-4B-nSg">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
@@ -83,9 +102,12 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQm-bi-owa" userLabel="Login button">
                                                     <rect key="frame" x="20" y="0.0" width="560" height="63.5"/>
-                                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="login"/>
-                                                    <state key="normal" title="Sign in"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                                    <state key="normal" title="Sign in">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="loginAction:" destination="pXg-aW-eMb" eventType="touchUpInside" id="o3W-Ou-zks"/>
                                                         <segue destination="fCx-Rg-xZv" kind="show" identifier="login" id="zh2-es-kUd"/>
@@ -105,11 +127,6 @@
                                 </cells>
                             </tableViewSection>
                         </sections>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="rect" keyPath="contentInset">
-                                <rect key="value" x="200" y="0.0" width="0.0" height="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="pXg-aW-eMb" id="AHI-hF-eKE"/>
                             <outlet property="delegate" destination="pXg-aW-eMb" id="Xy1-1u-myY"/>
