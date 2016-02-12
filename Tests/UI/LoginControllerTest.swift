@@ -55,7 +55,19 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.buttons["login"].tap()
   }
 
-  func testSuccessfulLogin() {
+  func testBothFieldsShakeWhenBothFieldsAreIncorrect() {
+    let app = XCUIApplication()
+    let tablesQuery = app.tables
+    
+    tablesQuery.textFields["username"].tap()
+    tablesQuery.textFields["username"].typeText("noone")
+    app.keyboards.buttons["Next"].tap()
+    tablesQuery.secureTextFields["password"].typeText("not_the_password")
+    app.keyboards.buttons["Done"].tap()
+    tablesQuery.buttons["login"].tap()
+  }
+
+  func testSuccessfulLoginWhenBothFieldsAreCorrect() {
     let app = XCUIApplication()
     let tablesQuery = app.tables
 
