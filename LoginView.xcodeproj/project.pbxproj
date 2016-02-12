@@ -14,6 +14,8 @@
 		625C70151C6D4A24000BB9AA /* LoginViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C70141C6D4A24000BB9AA /* LoginViewTests.swift */; };
 		62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D201C6D4B9D0070EAE2 /* LoginController.swift */; };
 		62849D231C6D50130070EAE2 /* LoginControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D221C6D50130070EAE2 /* LoginControllerTest.swift */; };
+		62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAC1C6D850100475E9A /* Keychain.swift */; };
+		62AE0AAF1C6D85A300475E9A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		625C70211C6D4A25000BB9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62849D201C6D4B9D0070EAE2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		62849D221C6D50130070EAE2 /* LoginControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerTest.swift; sourceTree = "<group>"; };
+		62AE0AAC1C6D850100475E9A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +81,12 @@
 		625C6FF31C6D4A24000BB9AA = {
 			isa = PBXGroup;
 			children = (
-				625C6FFE1C6D4A24000BB9AA /* Source */,
-				625C702F1C6D4A59000BB9AA /* Tests */,
-				625C702E1C6D4A43000BB9AA /* Resources */,
-				625C702D1C6D4A3B000BB9AA /* SupportFiles */,
+				62AE0AAB1C6D84C600475E9A /* Library */,
 				625C6FFD1C6D4A24000BB9AA /* Products */,
+				625C702E1C6D4A43000BB9AA /* Resources */,
+				625C6FFE1C6D4A24000BB9AA /* Source */,
+				625C702D1C6D4A3B000BB9AA /* SupportFiles */,
+				625C702F1C6D4A59000BB9AA /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				625C70161C6D4A24000BB9AA /* Info.plist */,
+				62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */,
 				625C70141C6D4A24000BB9AA /* LoginViewTests.swift */,
 			);
 			path = Unit;
@@ -147,6 +153,14 @@
 				625C70131C6D4A24000BB9AA /* Unit */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		62AE0AAB1C6D84C600475E9A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				62AE0AAC1C6D850100475E9A /* Keychain.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +296,7 @@
 			files = (
 				62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */,
 				625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */,
+				62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				625C70151C6D4A24000BB9AA /* LoginViewTests.swift in Sources */,
+				62AE0AAF1C6D85A300475E9A /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
