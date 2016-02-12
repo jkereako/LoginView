@@ -1,5 +1,6 @@
 # LoginView
 An example of how to build a login view in Swift.
+
 <img src="https://raw.githubusercontent.com/jkereako/LoginView/master/Images/screen-shot.png" width="320" height="568" />
 
 # Credit
