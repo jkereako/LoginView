@@ -16,6 +16,8 @@
 		62849D231C6D50130070EAE2 /* LoginControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D221C6D50130070EAE2 /* LoginControllerTest.swift */; };
 		62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAC1C6D850100475E9A /* Keychain.swift */; };
 		62AE0AAF1C6D85A300475E9A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */; };
+		62AE0AB11C6D892300475E9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AB01C6D892300475E9A /* Constants.swift */; };
+		62AE0AB31C6D97EF00475E9A /* TextFieldShakeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AB21C6D97EF00475E9A /* TextFieldShakeAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		62849D221C6D50130070EAE2 /* LoginControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerTest.swift; sourceTree = "<group>"; };
 		62AE0AAC1C6D850100475E9A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
+		62AE0AB01C6D892300475E9A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		62AE0AB21C6D97EF00475E9A /* TextFieldShakeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldShakeAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				62AE0AAC1C6D850100475E9A /* Keychain.swift */,
+				62AE0AB01C6D892300475E9A /* Constants.swift */,
+				62AE0AB21C6D97EF00475E9A /* TextFieldShakeAnimator.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -294,9 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62AE0AB31C6D97EF00475E9A /* TextFieldShakeAnimator.swift in Sources */,
 				62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */,
 				625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */,
 				62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */,
+				62AE0AB11C6D892300475E9A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

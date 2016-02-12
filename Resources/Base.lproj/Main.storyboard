@@ -87,6 +87,7 @@
                                                     <accessibility key="accessibilityConfiguration" identifier="login"/>
                                                     <state key="normal" title="Sign in"/>
                                                     <connections>
+                                                        <action selector="loginAction:" destination="pXg-aW-eMb" eventType="touchUpInside" id="o3W-Ou-zks"/>
                                                         <segue destination="fCx-Rg-xZv" kind="show" identifier="login" id="zh2-es-kUd"/>
                                                     </connections>
                                                 </button>
