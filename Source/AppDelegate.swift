@@ -34,7 +34,6 @@ extension AppDelegate: UIApplicationDelegate {
     // set the test credentials here.
 
     if arguments.contains("ResetTestCredentials") {
-      Keychain.deletePassword(forAccount: "jonsnow")
       Keychain.setPassword("wallwatcher247", forAccount: "jonsnow")
     }
 
