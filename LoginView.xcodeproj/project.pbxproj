@@ -115,8 +115,7 @@
 				625C70161C6D4A24000BB9AA /* Info.plist */,
 				62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */,
 			);
-			name = UnitTests;
-			path = Unit;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		625C701E1C6D4A25000BB9AA /* UITests */ = {
@@ -125,8 +124,7 @@
 				625C70211C6D4A25000BB9AA /* Info.plist */,
 				62849D221C6D50130070EAE2 /* LoginControllerTest.swift */,
 			);
-			name = UITests;
-			path = UI;
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		625C702D1C6D4A3B000BB9AA /* SupportFiles */ = {
@@ -467,7 +465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = Tests/Unit/Info.plist;
+				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.LoginViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -479,7 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = Tests/Unit/Info.plist;
+				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.LoginViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -490,7 +488,7 @@
 		625C702B1C6D4A25000BB9AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = Tests/UI/Info.plist;
+				INFOPLIST_FILE = Tests/UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.LoginViewUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -502,7 +500,7 @@
 		625C702C1C6D4A25000BB9AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = Tests/UI/Info.plist;
+				INFOPLIST_FILE = Tests/UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.LoginViewUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
