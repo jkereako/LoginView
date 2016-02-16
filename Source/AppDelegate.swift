@@ -33,10 +33,8 @@ extension AppDelegate: UIApplicationDelegate {
     // LoginController always failed because the credentials were always empty. Hence, we have to 
     // set the test credentials here.
 
-    // Clear out the account before setting.
-    Keychain.deletePassword(forAccount: "jonsnow")
-
-    if arguments.contains("SetTestCredentials") {
+    if arguments.contains("ResetTestCredentials") {
+      Keychain.deletePassword(forAccount: "jonsnow")
       Keychain.setPassword("wallwatcher247", forAccount: "jonsnow")
     }
 

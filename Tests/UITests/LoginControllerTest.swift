@@ -16,7 +16,7 @@ class LoginControllerTest: XCTestCase {
     continueAfterFailure = false
 
     let app = XCUIApplication()
-    app.launchArguments = ["SetTestCredentials"]
+    app.launchArguments = ["ResetTestCredentials"]
     app.launch()
   }
 
