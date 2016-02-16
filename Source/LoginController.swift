@@ -19,7 +19,7 @@ extension LoginController {
   @IBAction func loginAction(sender: UIButton) {
     let password = Keychain.password(forAccount: usernameField.text ?? "")
 
-    if passwordField.text == password && password.characters.count > 0 {
+    if passwordField.text == password && !password.isEmpty {
         return
     }
     
@@ -32,15 +32,15 @@ extension LoginController {
 extension LoginController {
   override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
     guard identifier == "login",
-      let username = usernameField.text where username.characters.count > 0,
-      let suppliedPassword = passwordField.text where username.characters.count > 0 else {
+      let username = usernameField.text where !username.isEmpty,
+      let suppliedPassword = passwordField.text where !suppliedPassword.isEmpty else {
       return false
     }
 
     let actualPassword = Keychain.password(forAccount: username)
 
     // Make sure the passwords match and that `Keychain.password()` has returned a non-empty string
-    if suppliedPassword == actualPassword && actualPassword.characters.count > 0 {
+    if suppliedPassword == actualPassword && !actualPassword.isEmpty {
       return true
     }
 

@@ -109,21 +109,23 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		625C70131C6D4A24000BB9AA /* Unit */ = {
+		625C70131C6D4A24000BB9AA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				625C70161C6D4A24000BB9AA /* Info.plist */,
 				62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */,
 			);
+			name = UnitTests;
 			path = Unit;
 			sourceTree = "<group>";
 		};
-		625C701E1C6D4A25000BB9AA /* UI */ = {
+		625C701E1C6D4A25000BB9AA /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				625C70211C6D4A25000BB9AA /* Info.plist */,
 				62849D221C6D50130070EAE2 /* LoginControllerTest.swift */,
 			);
+			name = UITests;
 			path = UI;
 			sourceTree = "<group>";
 		};
@@ -148,8 +150,8 @@
 		625C702F1C6D4A59000BB9AA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				625C701E1C6D4A25000BB9AA /* UI */,
-				625C70131C6D4A24000BB9AA /* Unit */,
+				625C701E1C6D4A25000BB9AA /* UITests */,
+				625C70131C6D4A24000BB9AA /* UnitTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

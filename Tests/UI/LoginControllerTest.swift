@@ -12,9 +12,12 @@ class LoginControllerTest: XCTestCase {
 
   override func setUp() {
     super.setUp()
+
     continueAfterFailure = false
 
-    XCUIApplication().launch()
+    let app = XCUIApplication()
+    app.launchArguments = ["SetTestCredentials"]
+    app.launch()
   }
 
   func testBothFieldsShakeWhenUsernameFieldIsEmptyAndPasswordFieldIsCorrect() {
