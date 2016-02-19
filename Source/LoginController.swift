@@ -11,6 +11,7 @@ import UIKit
 class LoginController: UITableViewController {
   @IBOutlet weak var usernameField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var loginButton: UIButton!
 }
 
 // MARK: - Actions
@@ -22,9 +23,11 @@ extension LoginController {
     if passwordField.text == password && !password.isEmpty {
         return
     }
-    
-    TextFieldShakeAnimator(speed: 0.08, amplitude: 5, count: 6, textField: usernameField).shake()
-    TextFieldShakeAnimator(speed: 0.08, amplitude: 5, count: 6, textField: passwordField).shake()
+
+    // Indicate failed login
+    ShakeAnimator(view: usernameField).shake()
+    ShakeAnimator(view: passwordField).shake()
+    ShakeAnimator(view: loginButton).shake()
   }
 }
 

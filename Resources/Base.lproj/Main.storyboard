@@ -133,6 +133,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="loginButton" destination="IQm-bi-owa" id="GIs-LB-H2G"/>
                         <outlet property="passwordField" destination="50w-26-joi" id="EDh-j8-gp5"/>
                         <outlet property="usernameField" destination="zBz-LF-uZB" id="tSY-VF-vXf"/>
                     </connections>
