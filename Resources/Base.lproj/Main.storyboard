@@ -21,6 +21,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-49-b3b">
                                     <rect key="frame" x="245" y="81" width="109" height="57.5"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="loginViewTitle"/>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="48"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -159,6 +160,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authenticated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8u-Rl-4Ag">
                                         <rect key="frame" x="141" y="0.0" width="278.5" height="290"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="authenticatedViewTitle"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="48"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

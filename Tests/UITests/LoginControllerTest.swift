@@ -28,6 +28,9 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.secureTextFields["password"].typeText("wallwatcher247")
     app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
+
+    // Test that the text "Login" is still visible, which indicates failed authentication
+    XCTAssert(app.staticTexts["loginViewTitle"].exists)
   }
 
   func testBothFieldsShakeWhenUsernameFieldIsEmptyAndPasswordFieldIsIncorrect() {
@@ -38,6 +41,8 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.secureTextFields["password"].typeText("not_the_password")
     app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
+
+    XCTAssert(app.staticTexts["loginViewTitle"].exists)
   }
 
   func testBothFieldsShakeWhenPasswordFieldIsEmptyAndUsernameFieldIsIncorrect() {
@@ -49,6 +54,8 @@ class LoginControllerTest: XCTestCase {
     app.keyboards.buttons["Next"].tap()
     app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
+
+    XCTAssert(app.staticTexts["loginViewTitle"].exists)
   }
 
   func testBothFieldsShakeWhenBothFieldsAreEmpty() {
@@ -56,6 +63,8 @@ class LoginControllerTest: XCTestCase {
     let tablesQuery = app.tables
 
     tablesQuery.buttons["login"].tap()
+
+    XCTAssert(app.staticTexts["loginViewTitle"].exists)
   }
 
   func testBothFieldsShakeWhenBothFieldsAreIncorrect() {
@@ -68,6 +77,8 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.secureTextFields["password"].typeText("not_the_password")
     app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
+
+    XCTAssert(app.staticTexts["loginViewTitle"].exists)
   }
 
   func testSuccessfulLoginWhenBothFieldsAreCorrect() {
@@ -80,5 +91,8 @@ class LoginControllerTest: XCTestCase {
     tablesQuery.secureTextFields["password"].typeText("wallwatcher247")
     app.keyboards.buttons["Done"].tap()
     tablesQuery.buttons["login"].tap()
+
+    // Assert that authentication was successful
+    XCTAssert(app.staticTexts["authenticatedViewTitle"].exists)
   }
 }
