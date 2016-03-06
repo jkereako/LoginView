@@ -82,11 +82,11 @@
 			isa = PBXGroup;
 			children = (
 				62AE0AAB1C6D84C600475E9A /* Library */,
-				625C6FFD1C6D4A24000BB9AA /* Products */,
-				625C702E1C6D4A43000BB9AA /* Resources */,
 				625C6FFE1C6D4A24000BB9AA /* Source */,
-				625C702D1C6D4A3B000BB9AA /* SupportFiles */,
+				625C702E1C6D4A43000BB9AA /* Resources */,
 				625C702F1C6D4A59000BB9AA /* Tests */,
+				625C702D1C6D4A3B000BB9AA /* SupportFiles */,
+				625C6FFD1C6D4A24000BB9AA /* Products */,
 			);
 			sourceTree = "<group>";
 		};

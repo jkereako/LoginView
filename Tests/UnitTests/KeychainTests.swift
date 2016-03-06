@@ -8,7 +8,7 @@
 import XCTest
 @testable import LoginView
 
-class TestKeychain: XCTestCase {
+class KeychainTests: XCTestCase {
 
   let service = "keychain"
   let password = "banana45?!"
