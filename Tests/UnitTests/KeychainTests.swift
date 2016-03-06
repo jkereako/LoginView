@@ -5,11 +5,10 @@
 //  Created by Hyper on 12/14/15.
 //  Copyright © 2016 Hyper. All rights reserved.
 //
-
 import XCTest
 @testable import LoginView
 
-class KeychainTests: XCTestCase {
+class TestKeychain: XCTestCase {
 
   let service = "keychain"
   let password = "banana45?!"
