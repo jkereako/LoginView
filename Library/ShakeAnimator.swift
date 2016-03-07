@@ -37,11 +37,13 @@ struct ShakeAnimator {
   /// Shakes a view 3 times from left to right.
   func shake() {
     let animation = CAKeyframeAnimation()
+    // "If the calculationMode is set to kCAAnimationLinear, the first value in the array must be
+    // 0.0 and the last value must be 1.0. Values are interpolated between the specified keytimes."
+    animation.calculationMode = kCAAnimationLinear
     animation.keyPath = "position.x"
     animation.values =  [0, amplitude, -amplitude, amplitude / 2, 0]
-    animation.keyTimes = [0, (1 / 6.0), (3 / 6.0), (5 / 6.0), 1]
+    animation.keyTimes = [0, (1 / 6.0), (3 / 6.0), (5 / 6.0), 1.0]
     animation.duration = duration
-    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
     animation.additive = true
 
     view.layer.addAnimation(animation, forKey:"shake")
