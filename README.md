@@ -16,12 +16,17 @@ UIKit do the work. In short, always use a table view when displaying text
 fields. This is more true than ever before considering the varying sizes of
 iPhones.
 
+# Animations
+This project also shows examples of how to animate UIViews and to provide custom
+transition animations.
+
 # Credit
 This project uses designs from Jake Lin's [IBAnimatable][iba], credential
 storage from Hyper's [Keychain][keychain] and animations from XMartLabs'
-[XLSwiftKit][shake].
+[XLSwiftKit][shake] and [Andrea Mazzini][bubble].
 
 [iba]: https://github.com/JakeLin/IBAnimatable
 [keychain]: https://github.com/hyperoslo/Keychain
 [shake]: https://github.com/xmartlabs/XLSwiftKit
+[bubble]: https://github.com/andreamazz/BubbleTransition
 
