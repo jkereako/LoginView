@@ -21,7 +21,7 @@ extension LoginController {
     let password = Keychain.password(forAccount: usernameField.text ?? "")
 
     if passwordField.text == password && !password.isEmpty {
-        return
+      return
     }
 
     // Indicate failed login
@@ -37,7 +37,7 @@ extension LoginController {
     guard identifier == "login",
       let username = usernameField.text where !username.isEmpty,
       let suppliedPassword = passwordField.text where !suppliedPassword.isEmpty else {
-      return false
+        return false
     }
 
     let actualPassword = Keychain.password(forAccount: username)
@@ -48,6 +48,13 @@ extension LoginController {
     }
 
     return false
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    super.prepareForSegue(segue, sender: sender)
+
+    segue.destinationViewController.transitioningDelegate = self
+    segue.destinationViewController.modalPresentationStyle = .Custom
   }
 }
 
@@ -68,5 +75,17 @@ extension LoginController: UITextFieldDelegate {
     }
 
     return true
+  }
+}
+
+extension LoginController: UIViewControllerTransitioningDelegate {
+  func animationControllerForPresentedController(
+    presented: UIViewController,
+    presentingController presenting: UIViewController,
+                         sourceController source: UIViewController) ->
+    UIViewControllerAnimatedTransitioning? {
+
+      // Match the transition color to the background color of the presented view
+      return BubblePresentationAnimator(backgroundColor: presented.view.backgroundColor!)
   }
 }

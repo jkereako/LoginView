@@ -16,6 +16,7 @@
 		62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAC1C6D850100475E9A /* Keychain.swift */; };
 		62AE0AAF1C6D85A300475E9A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */; };
 		62AE0AB31C6D97EF00475E9A /* ShakeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */; };
+		62E0A6391C9CFE5F005EC1CB /* BubblePresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		62AE0AAC1C6D850100475E9A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeAnimator.swift; sourceTree = "<group>"; };
+		62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblePresentationAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				62AE0AAC1C6D850100475E9A /* Keychain.swift */,
 				62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */,
+				62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E0A6391C9CFE5F005EC1CB /* BubblePresentationAnimator.swift in Sources */,
 				62AE0AB31C6D97EF00475E9A /* ShakeAnimator.swift in Sources */,
 				62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */,
 				625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */,
