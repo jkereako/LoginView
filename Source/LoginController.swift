@@ -85,7 +85,12 @@ extension LoginController: UIViewControllerTransitioningDelegate {
                          sourceController source: UIViewController) ->
     UIViewControllerAnimatedTransitioning? {
 
+      // Find the center of `loginButton` in the container view's coordinate system
+      let origin = loginButton.convertPoint(loginButton.center, toView: view)
+
       // Match the transition color to the background color of the presented view
-      return BubblePresentationAnimator(backgroundColor: presented.view.backgroundColor!)
+      return BubblePresentationAnimator(
+        origin: origin, backgroundColor: presented.view.backgroundColor!
+      )
   }
 }

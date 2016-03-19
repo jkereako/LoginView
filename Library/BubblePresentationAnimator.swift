@@ -29,12 +29,13 @@
 import UIKit
 
 class BubblePresentationAnimator: NSObject {
+  let origin: CGPoint
   let backgroundColor: UIColor
 
-  init(backgroundColor: UIColor = UIColor.clearColor()) {
+  init(origin: CGPoint = CGPointZero, backgroundColor: UIColor = UIColor.clearColor()) {
+    self.origin = origin
     self.backgroundColor = backgroundColor
   }
-
 }
 
 extension BubblePresentationAnimator: UIViewControllerAnimatedTransitioning {
@@ -65,12 +66,12 @@ extension BubblePresentationAnimator: UIViewControllerAnimatedTransitioning {
     let bubble = UIView()
     bubble.frame = frameForBubble(originalCenter, size: originalSize, start: CGPointZero)
     bubble.layer.cornerRadius = bubble.frame.size.height / 2
-    bubble.center = containerView.center
+    bubble.center = origin
     bubble.transform = CGAffineTransformMakeScale(0.001, 0.001)
     bubble.backgroundColor = backgroundColor
     containerView.addSubview(bubble)
 
-    to?.center = containerView.center
+    to?.center = origin
     to?.transform = CGAffineTransformMakeScale(0.001, 0.001)
     to?.alpha = 0
     containerView.addSubview(to ?? UIView())
