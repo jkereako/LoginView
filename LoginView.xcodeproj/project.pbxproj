@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36E5A4BC1CCFD4AE008A40D6 /* Keychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E5A4BB1CCFD4AE008A40D6 /* Keychain.framework */; };
+		36E5A4BF1CCFD604008A40D6 /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5A4BE1CCFD604008A40D6 /* LoginControllerTests.swift */; };
 		625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C6FFF1C6D4A24000BB9AA /* AppDelegate.swift */; };
 		625C70051C6D4A24000BB9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C70031C6D4A24000BB9AA /* Main.storyboard */; };
 		625C70071C6D4A24000BB9AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625C70061C6D4A24000BB9AA /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		36E5A4BB1CCFD4AE008A40D6 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = Carthage/Build/iOS/Keychain.framework; sourceTree = "<group>"; };
+		36E5A4BE1CCFD604008A40D6 /* LoginControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
 		625C6FFC1C6D4A24000BB9AA /* LoginView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		625C6FFF1C6D4A24000BB9AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		625C70041C6D4A24000BB9AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				625C70161C6D4A24000BB9AA /* Info.plist */,
+				36E5A4BE1CCFD604008A40D6 /* LoginControllerTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -235,7 +238,7 @@
 		625C6FF41C6D4A24000BB9AA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Alexis Digital";
 				TargetAttributes = {
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E5A4BF1CCFD604008A40D6 /* LoginControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,10 +505,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.LoginViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoginView.app/LoginView";
 			};
 			name = Debug;
@@ -513,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexisdigital.LoginViewTests;
