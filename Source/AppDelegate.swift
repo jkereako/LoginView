@@ -20,7 +20,6 @@ extension AppDelegate: UIApplicationDelegate {
     // see: http://stackoverflow.com/questions/32667201/accessing-the-host-app-code-from-the-xcode-7-ui-test-target#33466038
     var arguments = NSProcessInfo.processInfo().arguments
     arguments.removeFirst()
-    print("App launching with the following arguments: \(arguments)")
 
     // Why do we have to set credentials for UI tests here instead of the test itself? From Konnor
     // on StackOverflow:
@@ -44,4 +43,3 @@ extension AppDelegate: UIApplicationDelegate {
     return true
   }
 }
-

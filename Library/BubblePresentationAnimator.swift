@@ -48,15 +48,15 @@ extension BubblePresentationAnimator: UIViewControllerAnimatedTransitioning {
     return CGRect(origin: CGPointZero, size: size)
   }
 
-  func transitionDuration(transitionContext: UIViewControllerContextTransitioning?)
-    -> NSTimeInterval {
+  func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) ->
+    NSTimeInterval {
 
       return 0.5
   }
 
   func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
     guard let containerView = transitionContext.containerView() else {
-      return
+      fatalError("Expected `containerView()` to return a value.")
     }
 
     let to = transitionContext.viewForKey(UITransitionContextToViewKey)
