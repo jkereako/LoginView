@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36E5A4BC1CCFD4AE008A40D6 /* Keychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E5A4BB1CCFD4AE008A40D6 /* Keychain.framework */; };
 		625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C6FFF1C6D4A24000BB9AA /* AppDelegate.swift */; };
 		625C70051C6D4A24000BB9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C70031C6D4A24000BB9AA /* Main.storyboard */; };
 		625C70071C6D4A24000BB9AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625C70061C6D4A24000BB9AA /* Assets.xcassets */; };
 		625C700A1C6D4A24000BB9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C70081C6D4A24000BB9AA /* LaunchScreen.storyboard */; };
 		62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D201C6D4B9D0070EAE2 /* LoginController.swift */; };
 		62849D231C6D50130070EAE2 /* LoginControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D221C6D50130070EAE2 /* LoginControllerTest.swift */; };
-		62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAC1C6D850100475E9A /* Keychain.swift */; };
-		62AE0AAF1C6D85A300475E9A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */; };
 		62AE0AB31C6D97EF00475E9A /* ShakeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */; };
 		62E0A6391C9CFE5F005EC1CB /* BubblePresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36E5A4BB1CCFD4AE008A40D6 /* Keychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Keychain.framework; path = Carthage/Build/iOS/Keychain.framework; sourceTree = "<group>"; };
 		625C6FFC1C6D4A24000BB9AA /* LoginView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		625C6FFF1C6D4A24000BB9AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		625C70041C6D4A24000BB9AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,8 +49,6 @@
 		625C70211C6D4A25000BB9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62849D201C6D4B9D0070EAE2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		62849D221C6D50130070EAE2 /* LoginControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerTest.swift; sourceTree = "<group>"; };
-		62AE0AAC1C6D850100475E9A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeAnimator.swift; sourceTree = "<group>"; };
 		62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblePresentationAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E5A4BC1CCFD4AE008A40D6 /* Keychain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,9 +79,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36E5A4BA1CCFD496008A40D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36E5A4BB1CCFD4AE008A40D6 /* Keychain.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		625C6FF31C6D4A24000BB9AA = {
 			isa = PBXGroup;
 			children = (
+				36E5A4BA1CCFD496008A40D6 /* Frameworks */,
 				62AE0AAB1C6D84C600475E9A /* Library */,
 				625C6FFE1C6D4A24000BB9AA /* Source */,
 				625C702E1C6D4A43000BB9AA /* Resources */,
@@ -115,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				625C70161C6D4A24000BB9AA /* Info.plist */,
-				62AE0AAE1C6D85A300475E9A /* KeychainTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -159,7 +166,6 @@
 		62AE0AAB1C6D84C600475E9A /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				62AE0AAC1C6D850100475E9A /* Keychain.swift */,
 				62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */,
 				62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */,
 			);
@@ -176,6 +182,7 @@
 				625C6FF81C6D4A24000BB9AA /* Sources */,
 				625C6FF91C6D4A24000BB9AA /* Frameworks */,
 				625C6FFA1C6D4A24000BB9AA /* Resources */,
+				36E5A4BD1CCFD4B8008A40D6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -292,6 +299,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36E5A4BD1CCFD4B8008A40D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Keychain.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		625C6FF81C6D4A24000BB9AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -301,7 +325,6 @@
 				62AE0AB31C6D97EF00475E9A /* ShakeAnimator.swift in Sources */,
 				62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */,
 				625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */,
-				62AE0AAD1C6D850100475E9A /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62AE0AAF1C6D85A300475E9A /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +468,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -459,6 +485,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

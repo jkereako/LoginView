@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Keychain
 
 class LoginController: UITableViewController {
   @IBOutlet weak var usernameField: UITextField!
