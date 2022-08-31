@@ -20,7 +20,7 @@ extension LoginController {
   @IBAction func loginAction(sender: UIButton) {
     let password = Keychain.password(forAccount: usernameField.text ?? "")
 
-    if passwordField.text == password && !password.isEmpty {
+    if passwordField.text == password {
       return
     }
 
@@ -43,7 +43,7 @@ extension LoginController {
         let actualPassword = Keychain.password(forAccount: username)
         
         // Make sure the passwords match and that `Keychain.password()` has returned a non-empty string
-        if suppliedPassword == actualPassword && !actualPassword.isEmpty {
+        if suppliedPassword == actualPassword {
             return true
             
         }
