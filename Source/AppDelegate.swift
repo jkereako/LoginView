@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Keychain
 
 @UIApplicationMain
 class AppDelegate: UIResponder {
@@ -18,7 +17,7 @@ extension AppDelegate: UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
 
     // see: http://stackoverflow.com/questions/32667201/accessing-the-host-app-code-from-the-xcode-7-ui-test-target#33466038
-    var arguments = NSProcessInfo.processInfo().arguments
+      var arguments = ProcessInfo.processInfo.arguments
     arguments.removeFirst()
 
     // Why do we have to set credentials for UI tests here instead of the test itself? From Konnor

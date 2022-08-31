@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Keychain
 
-class LoginController: UITableViewController {
+final class LoginController: UITableViewController {
   @IBOutlet weak var usernameField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
@@ -34,51 +33,50 @@ extension LoginController {
 
 // MARK: - Navigation
 extension LoginController {
-  override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-    guard identifier == "login",
-      let username = usernameField.text where !username.isEmpty,
-      let suppliedPassword = passwordField.text where !suppliedPassword.isEmpty else {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        guard identifier == "login",
+              let username = usernameField.text, !username.isEmpty,
+              let suppliedPassword = passwordField.text, !suppliedPassword.isEmpty else {
+            return false
+        }
+        
+        let actualPassword = Keychain.password(forAccount: username)
+        
+        // Make sure the passwords match and that `Keychain.password()` has returned a non-empty string
+        if suppliedPassword == actualPassword && !actualPassword.isEmpty {
+            return true
+            
+        }
         return false
     }
 
-    let actualPassword = Keychain.password(forAccount: username)
-
-    // Make sure the passwords match and that `Keychain.password()` has returned a non-empty string
-    if suppliedPassword == actualPassword && !actualPassword.isEmpty {
-      return true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: self)
+        
+        segue.destination.transitioningDelegate = self
+        segue.destination.modalPresentationStyle = .custom
     }
-
-    return false
-  }
-
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    super.prepareForSegue(segue, sender: sender)
-
-    segue.destinationViewController.transitioningDelegate = self
-    segue.destinationViewController.modalPresentationStyle = .Custom
-  }
 }
 
 // MARK: - UITextFieldDelegate
 extension LoginController: UITextFieldDelegate {
-  func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-    return true
-  }
-
-  // Dismiss the keyboard when the user hits the return key
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
-
-    textField.resignFirstResponder()
-
-    // Move on to the password field automatically
-    if textField === usernameField {
-      passwordField.becomeFirstResponder()
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
 
-    return true
-  }
+        // Move on to the password field automatically
+        if textField === usernameField {
+          passwordField.becomeFirstResponder()
+        }
+
+        return true
+    }
 }
 
+// MARK: - UIViewControllerTransitioningDelegate
 extension LoginController: UIViewControllerTransitioningDelegate {
   func animationControllerForPresentedController(
     presented: UIViewController,
@@ -87,7 +85,7 @@ extension LoginController: UIViewControllerTransitioningDelegate {
     UIViewControllerAnimatedTransitioning? {
 
       // Find the center of `loginButton` in the container view's coordinate system
-      let origin = loginButton.convertPoint(loginButton.center, toView: view)
+      let origin = loginButton.convert(loginButton.center, to: view)
 
       // Match the transition color to the background color of the presented view
       return BubblePresentationAnimator(

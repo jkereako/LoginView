@@ -24,28 +24,34 @@
 import UIKit
 
 struct ShakeAnimator {
-  let duration: NSTimeInterval
-  let amplitude: Int
-  let view: UIView
-
-  init(view: UIView, duration: NSTimeInterval = 0.4, amplitude: Int = 10) {
-    self.duration = duration
-    self.amplitude = amplitude
-    self.view = view
-  }
+    let duration: TimeInterval
+    let amplitude: Int
+    let view: UIView
+    
+    init(view: UIView, duration: TimeInterval = 0.4, amplitude: Int = 10) {
+      self.duration = duration
+      self.amplitude = amplitude
+      self.view = view
+    }
 
   /// Shakes a view 3 times from left to right.
-  func shake() {
-    let animation = CAKeyframeAnimation()
-    // "If the calculationMode is set to kCAAnimationLinear, the first value in the array must be
-    // 0.0 and the last value must be 1.0. Values are interpolated between the specified keytimes."
-    animation.calculationMode = kCAAnimationLinear
-    animation.keyPath = "position.x"
-    animation.values =  [0, amplitude, -amplitude, amplitude / 2, 0]
-    animation.keyTimes = [0, (1 / 6.0), (3 / 6.0), (5 / 6.0), 1.0]
-    animation.duration = duration
-    animation.additive = true
-
-    view.layer.addAnimation(animation, forKey:"shake")
-  }
+    func shake() {
+        let animation = CAKeyframeAnimation()
+        // "If the calculationMode is set to kCAAnimationLinear, the first value in the array must be
+        // 0.0 and the last value must be 1.0. Values are interpolated between the specified keytimes."
+        animation.calculationMode = CAAnimationCalculationMode.linear
+        animation.keyPath = "position.x"
+        animation.values =  [0, amplitude, -amplitude, amplitude / 2, 0]
+        animation.keyTimes = [
+            NSNumber(integerLiteral: 0),
+            NSNumber(floatLiteral:(1 / 6.0)),
+            NSNumber(floatLiteral:(3 / 6.0)),
+            NSNumber(floatLiteral:(5 / 6.0)),
+            NSNumber(integerLiteral: 1)
+        ]
+        animation.duration = duration
+        animation.isAdditive = true
+        
+        view.layer.add(animation, forKey:"shake")
+    }
 }
