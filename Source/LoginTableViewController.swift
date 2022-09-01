@@ -9,9 +9,9 @@
 import UIKit
 
 final class LoginTableViewController: UITableViewController {
-    @IBOutlet private weak var usernameField: UITextField!
-    @IBOutlet private weak var passwordField: UITextField!
-    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private(set) weak var usernameField: UITextField!
+    @IBOutlet private(set) weak var passwordField: UITextField!
+    @IBOutlet private(set) weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
