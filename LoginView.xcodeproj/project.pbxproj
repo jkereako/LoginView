@@ -13,7 +13,7 @@
 		625C70051C6D4A24000BB9AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C70031C6D4A24000BB9AA /* Main.storyboard */; };
 		625C70071C6D4A24000BB9AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625C70061C6D4A24000BB9AA /* Assets.xcassets */; };
 		625C700A1C6D4A24000BB9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C70081C6D4A24000BB9AA /* LaunchScreen.storyboard */; };
-		62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D201C6D4B9D0070EAE2 /* LoginController.swift */; };
+		62849D211C6D4B9D0070EAE2 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D201C6D4B9D0070EAE2 /* LoginTableViewController.swift */; };
 		62849D231C6D50130070EAE2 /* LoginControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62849D221C6D50130070EAE2 /* LoginControllerTest.swift */; };
 		62AE0AB31C6D97EF00475E9A /* ShakeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */; };
 		62E0A6391C9CFE5F005EC1CB /* BubblePresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */; };
@@ -49,7 +49,7 @@
 		625C70161C6D4A24000BB9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625C701B1C6D4A25000BB9AA /* LoginViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		625C70211C6D4A25000BB9AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62849D201C6D4B9D0070EAE2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		62849D201C6D4B9D0070EAE2 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		62849D221C6D50130070EAE2 /* LoginControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginControllerTest.swift; sourceTree = "<group>"; };
 		62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeAnimator.swift; sourceTree = "<group>"; };
 		62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = BubblePresentationAnimator.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -107,7 +107,7 @@
 				62AE0AB21C6D97EF00475E9A /* ShakeAnimator.swift */,
 				62E0A6381C9CFE5F005EC1CB /* BubblePresentationAnimator.swift */,
 				625C6FFF1C6D4A24000BB9AA /* AppDelegate.swift */,
-				62849D201C6D4B9D0070EAE2 /* LoginController.swift */,
+				62849D201C6D4B9D0070EAE2 /* LoginTableViewController.swift */,
 				1D52F9E228BFFCDA005B305B /* Keychain.swift */,
 			);
 			path = Source;
@@ -291,7 +291,7 @@
 			files = (
 				62E0A6391C9CFE5F005EC1CB /* BubblePresentationAnimator.swift in Sources */,
 				62AE0AB31C6D97EF00475E9A /* ShakeAnimator.swift in Sources */,
-				62849D211C6D4B9D0070EAE2 /* LoginController.swift in Sources */,
+				62849D211C6D4B9D0070EAE2 /* LoginTableViewController.swift in Sources */,
 				625C70001C6D4A24000BB9AA /* AppDelegate.swift in Sources */,
 				1D52F9E328BFFCDA005B305B /* Keychain.swift in Sources */,
 			);

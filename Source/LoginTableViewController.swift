@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LoginController: UITableViewController {
+final class LoginTableViewController: UITableViewController {
     @IBOutlet private weak var usernameField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
@@ -52,7 +52,7 @@ final class LoginController: UITableViewController {
 }
 
 // MARK: - Actions
-extension LoginController {
+extension LoginTableViewController {
     // This is triggered before `shouldPerformSegueWithIdentifier`
     @IBAction func loginAction(sender: UIButton) {
         let password = Keychain.password(forAccount: usernameField.text ?? "")
@@ -69,7 +69,7 @@ extension LoginController {
 }
 
 // MARK: - Navigation
-extension LoginController {
+extension LoginTableViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         guard identifier == "login",
               let username = usernameField.text, !username.isEmpty,
@@ -96,7 +96,7 @@ extension LoginController {
 }
 
 // MARK: - UITextFieldDelegate
-extension LoginController: UITextFieldDelegate {
+extension LoginTableViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -114,7 +114,7 @@ extension LoginController: UITextFieldDelegate {
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-extension LoginController: UIViewControllerTransitioningDelegate {
+extension LoginTableViewController: UIViewControllerTransitioningDelegate {
     func animationControllerForPresentedController(
         presented: UIViewController,
         presentingController presenting: UIViewController,
