@@ -9,26 +9,63 @@
 import UIKit
 
 final class LoginController: UITableViewController {
-  @IBOutlet weak var usernameField: UITextField!
-  @IBOutlet weak var passwordField: UITextField!
-  @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet private weak var usernameField: UITextField!
+    @IBOutlet private weak var passwordField: UITextField!
+    @IBOutlet private weak var loginButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.rowHeight = calculateRowHeight()
+        tableView.isScrollEnabled = shouldEnableScrolling()
+    }
+    
+    private func shouldEnableScrolling() -> Bool {
+        return calculateTableViewHeight() > view.bounds.height
+    }
+    
+    /// Dynamically size the row height based on the size of the font.
+    private func calculateRowHeight() -> CGFloat {
+        let defaultRowHeight = 64.0
+        let fontSize = usernameField.font?.pointSize ?? 0
+        
+        return defaultRowHeight + fontSize
+    }
+    
+    /// Find the height of all of the table view's content. If the height exceeds the
+    /// bounds of the view, then we should enable scrolling.
+    private func calculateTableViewHeight() -> CGFloat {
+        let rowCount = tableView.numberOfRows(inSection: 0)
+        
+        let tableViewRowHeight = CGFloat(integerLiteral: rowCount) * tableView.rowHeight
+        var tableViewHeaderHeight = tableView.sectionHeaderHeight + tableView.sectionFooterHeight
+        var tableViewHeight = tableView.tableHeaderView?.bounds.height ?? 0
+
+        if #available(iOS 15.0, *) {
+            tableViewHeaderHeight += tableView.sectionHeaderTopPadding
+        }
+     
+        tableViewHeight += tableViewHeaderHeight + tableViewRowHeight
+        
+        return tableViewHeight
+    }
 }
 
 // MARK: - Actions
 extension LoginController {
-  // This is triggered before `shouldPerformSegueWithIdentifier`
-  @IBAction func loginAction(sender: UIButton) {
-    let password = Keychain.password(forAccount: usernameField.text ?? "")
-
-    if passwordField.text == password {
-      return
+    // This is triggered before `shouldPerformSegueWithIdentifier`
+    @IBAction func loginAction(sender: UIButton) {
+        let password = Keychain.password(forAccount: usernameField.text ?? "")
+        
+        if passwordField.text == password {
+            return
+        }
+        
+        // Indicate failed login
+        ShakeAnimator(view: usernameField).shake()
+        ShakeAnimator(view: passwordField).shake()
+        ShakeAnimator(view: loginButton).shake()
     }
-
-    // Indicate failed login
-    ShakeAnimator(view: usernameField).shake()
-    ShakeAnimator(view: passwordField).shake()
-    ShakeAnimator(view: loginButton).shake()
-  }
 }
 
 // MARK: - Navigation
@@ -49,7 +86,7 @@ extension LoginController {
         }
         return false
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: self)
         
@@ -66,30 +103,30 @@ extension LoginController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-
+        
         // Move on to the password field automatically
         if textField === usernameField {
-          passwordField.becomeFirstResponder()
+            passwordField.becomeFirstResponder()
         }
-
+        
         return true
     }
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
 extension LoginController: UIViewControllerTransitioningDelegate {
-  func animationControllerForPresentedController(
-    presented: UIViewController,
-    presentingController presenting: UIViewController,
-                         sourceController source: UIViewController) ->
+    func animationControllerForPresentedController(
+        presented: UIViewController,
+        presentingController presenting: UIViewController,
+        sourceController source: UIViewController) ->
     UIViewControllerAnimatedTransitioning? {
-
-      // Find the center of `loginButton` in the container view's coordinate system
-      let origin = loginButton.convert(loginButton.center, to: view)
-
-      // Match the transition color to the background color of the presented view
-      return BubblePresentationAnimator(
-        origin: origin, backgroundColor: presented.view.backgroundColor!
-      )
-  }
+        
+        // Find the center of `loginButton` in the container view's coordinate system
+        let origin = loginButton.convert(loginButton.center, to: view)
+        
+        // Match the transition color to the background color of the presented view
+        return BubblePresentationAnimator(
+            origin: origin, backgroundColor: presented.view.backgroundColor!
+        )
+    }
 }
